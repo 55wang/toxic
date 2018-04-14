@@ -101,6 +101,7 @@ def tokenize_text(text):
     tokens = [token.strip() for token in tokens]
     return tokens
 
+
 def remove_special_characters(text):
     tokens = tokenize_text(text)
     pattern = re.compile('[{}]'.format(re.escape(string.punctuation)))

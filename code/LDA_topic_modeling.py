@@ -1,72 +1,75 @@
-
-from nltk.tokenize import RegexpTokenizer
-from nltk.corpus import stopwords
-from nltk.stem.snowball import SnowballStemmer
-from gensim import models, corpora
-
-
-# Load input data
-def load_data(input_file):
-    data = []
-    with open(input_file, 'r') as f:
-        for line in f.readlines():
-            data.append(line[:-1])
-
-    return data
+import sys
+from utils import *
+from sklearn.decomposition import LatentDirichletAllocation
+from sklearn.pipeline import Pipeline
+from pylab import *
 
 
-# Processor function for tokenizing, removing stop
-# words, and stemming
-def process(input_text):
-    # Create a regular expression tokenizer
-    tokenizer = RegexpTokenizer(r'\w+')
+def LDA_model(input, n_components, n_iter):
+    norm_corpus = normalize_corpus(input)
+    vectorizer, _ = build_feature_matrix(norm_corpus, feature_type='tfidf')
 
-    # Create a Snowball stemmer
-    stemmer = SnowballStemmer('english')
+    lda_model = LatentDirichletAllocation(n_components=n_components,  # Number of topics
+                                          max_iter=n_iter,  # Max learning iterations
+                                          learning_method='online',
+                                          random_state=100,  # Random state
+                                          batch_size=128,  # n docs in each learning iter
+                                          evaluate_every=-1,
+                                          n_jobs=-1)
 
-    # Get the list of stop words
-    stop_words = stopwords.words('english')
+    svd_transformer = Pipeline([('tfidf', vectorizer),
+                                ('svd', lda_model)])
 
-    # Tokenize the input string
-    tokens = tokenizer.tokenize(input_text.lower())
+    svd_matrix = svd_transformer.fit_transform(norm_corpus)
 
-    # Remove the stop words
-    tokens = [x for x in tokens if not x in stop_words]
-
-    # Perform stemming on the tokenized words
-    tokens_stemmed = [stemmer.stem(x) for x in tokens]
-
-    return tokens_stemmed
+    return vectorizer, lda_model, svd_transformer, svd_matrix
 
 
 if __name__ == '__main__':
-    # Load input data
-    data = load_data('data.txt')
+    input_data = ["The fox jumps over the dog",
+                  "The fox is very clever and quick",
+                  "The dog is slow and lazy",
+                  "The cat is smarter than the fox and the dog",
+                  "Python is an excellent programming language",
+                  "Java and Ruby are other programming languages",
+                  "Python and Java are very popular programming languages",
+                  "Python programs are smaller than Java programs"]
 
-    # Create a list for sentence tokens
-    tokens = [process(x) for x in data]
+    vectorizer, svd_model, svd_transformer, svd_matrix = LDA_model(input_data, 2, 100)
 
-    # Create a dictionary based on the sentence tokens
-    dict_tokens = corpora.Dictionary(tokens)
+    # test_query = ['dog fox jump smarter cat']
+    test_query = ['program small java python', 'dog fox jump smarter cat']
 
-    # Create a document-term matrix
-    doc_term_mat = [dict_tokens.doc2bow(token) for token in tokens]
+    norm_query = normalize_corpus(test_query)
+    query_vector = svd_transformer.transform(norm_query)
+    predicted_topic = np.argmax(query_vector, axis=1).tolist()
 
-    # Define the number of topics for the LDA model
-    num_topics = 2
+    # print query_vector
+    print 'test query predicted topic: ', predicted_topic
 
-    # Generate the LDA model
-    ldamodel = models.ldamodel.LdaModel(doc_term_mat,
-                                        num_topics=num_topics, id2word=dict_tokens, passes=25)
+    feat_names = vectorizer.get_feature_names()
 
-    num_words = 5
-    print('\nTop ' + str(num_words) + ' contributing words to each topic:')
-    for item in ldamodel.print_topics(num_topics=num_topics, num_words=num_words):
-        print('\nTopic', item[0])
+    for compNum in range(len(svd_model.components_)):
+        print compNum
+        comp = svd_model.components_[compNum]
 
-        # Print the contributing words along with their relative contributions
-        list_of_strings = item[1].split(' + ')
-        for text in list_of_strings:
-            weight = text.split('*')[0]
-            word = text.split('*')[1]
-            print(word, '==>', str(round(float(weight) * 100, 2)) + '%')
+        # Sort the weights in the first component, and get the indices
+        indices = np.argsort(comp).tolist()[::-1]
+
+        # Grab the top 10 terms which have the highest weight in this component.
+        terms = [feat_names[weightIndex] for weightIndex in indices[0:10]]
+        weights = [comp[weightIndex] for weightIndex in indices[0:10]]
+        print terms, weights
+        terms.reverse()
+        weights.reverse()
+        print terms, weights
+
+        positions = arange(10) + .5  # the bar centers on the y axis
+
+        figure(compNum)
+        barh(positions, weights, align='center')
+        yticks(positions, terms)
+        xlabel('Weight')
+        title('Strongest terms for component %d' % (compNum))
+        grid(True)
+        show()
