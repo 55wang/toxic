@@ -2,7 +2,7 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>Latent Dirichlet Allocation</h1>
+    <h1>Tweets Statistics</h1>
     <table class="table table-hover">
 
     </table>
@@ -28,8 +28,8 @@
 
     <table width="100%">
     <tr>
-        <td>
-            topic 1
+        <td width="15%">
+            Count Frequency
         </td>
         <td>
             <div id="chart1">
@@ -38,21 +38,11 @@
         </td>
     </tr>
     <tr>
-        <td>
-            topic 2
+        <td width="15%">
+            TFIDF Frequency
         </td>
         <td>
             <div id="chart2">
-            <svg></svg>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            topic 3
-        </td>
-        <td>
-            <div id="chart3">
             <svg></svg>
             </div>
         </td>
@@ -63,8 +53,8 @@
 <script>
     historicalBarChart = [
         {
-            key: "Topic Modeling",
-            values: {{ topic1 }}
+            key: "Count Frequency",
+            values: {{ count_result }}
         }
     ];
     nv.addGraph(function() {
@@ -83,10 +73,10 @@
         return chart;
     });
 
-    historicalBarChart2 = [
+        historicalBarChart2 = [
         {
-            key: "Topic Modeling",
-            values: {{ topic2 }}
+            key: "TFIDF Frequency",
+            values: {{ tfidf_result }}
         }
     ];
     nv.addGraph(function() {
@@ -100,28 +90,6 @@
             ;
         d3.select('#chart2 svg')
             .datum(historicalBarChart2)
-            .call(chart);
-        nv.utils.windowResize(chart.update);
-        return chart;
-    });
-
-        historicalBarChart3 = [
-        {
-            key: "Topic Modeling",
-            values: {{ topic3 }}
-        }
-    ];
-    nv.addGraph(function() {
-        var chart = nv.models.discreteBarChart()
-            .x(function(d) { return d.label })
-            .y(function(d) { return d.value })
-            .staggerLabels(true)
-            //.staggerLabels(historicalBarChart[0].values.length > 8)
-            .showValues(true)
-            .duration(250)
-            ;
-        d3.select('#chart3 svg')
-            .datum(historicalBarChart3)
             .call(chart);
         nv.utils.windowResize(chart.update);
         return chart;

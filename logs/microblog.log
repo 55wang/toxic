@@ -1,92 +1,80 @@
-2018-04-15 18:16:24,657 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:25,521 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:25,580 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:25,603 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:25,690 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:26,601 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:26,668 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:26,685 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:26,824 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:27,731 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:27,822 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:27,827 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:27,926 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:28,740 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:28,825 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:28,830 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:28,945 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:43,330 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:43,426 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:43,515 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:43,626 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:44,338 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:44,436 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:44,525 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:44,641 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:45,355 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:45,459 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:45,543 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:45,653 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:46,365 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:46,471 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:46,561 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:46,660 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:47,376 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:47,485 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:47,576 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:47,674 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:48,388 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:48,490 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:48,587 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:48,683 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:49,402 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:49,497 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:49,601 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:49,696 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:50,424 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:50,529 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:50,615 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:50,728 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:51,440 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:51,540 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:51,631 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:51,743 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:57,790 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:58,684 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:16:59,602 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:00,489 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:01,376 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:02,262 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:03,158 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:04,069 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:05,009 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:05,906 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:29,529 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:30,444 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:31,364 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:32,259 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:33,301 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:34,201 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:35,110 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:36,027 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:36,949 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:37,837 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:38,732 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:39,629 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:40,534 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:41,420 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:42,314 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:43,200 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:44,092 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:44,987 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:45,891 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:46,821 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:47,739 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:48,658 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:49,575 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:50,481 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:51,378 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:52,285 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:53,183 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:17:54,102 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 18:20:17,508 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:02:24,404 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 129, in stats
+    vectorizer2, feature_matrix2 = build_feature_matrix(norm_corpus, feature_type='tfidf', ngram_range=(1, 1))
+  File "/Users/wang/PycharmProjects/toxic/code/utils.py", line 57, in build_feature_matrix
+    feature_matrix = vectorizer.fit_transform(documents).astype(float)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 1381, in fit_transform
+    X = super(TfidfVectorizer, self).fit_transform(raw_documents)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 869, in fit_transform
+    self.fixed_vocabulary_)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 792, in _count_vocab
+    for feature in analyze(doc):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 266, in <lambda>
+    tokenize(preprocess(self.decode(doc))), stop_words)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 232, in <lambda>
+    return lambda x: strip_accents(x.lower())
+AttributeError: 'list' object has no attribute 'lower'
+2018-04-15 23:03:05,500 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:11:30,310 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:11:40,843 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 146, in stats
+    return render_template('stats.html', title='Statistics', count_result=count_result, tfidf_result=tfidf_result)
+NameError: global name 'tfidf_result' is not defined
+2018-04-15 23:12:25,123 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 146, in stats
+    return render_template('stats.html', title='Statistics', count_result=count_result, tfidf_result=tfidf_result)
+NameError: global name 'tfidf_result' is not defined
+2018-04-15 23:14:00,127 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:23:20,396 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:23:58,107 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:26:04,459 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:27:51,043 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:28:50,706 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:30:18,267 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:30:48,075 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:30:54,098 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:31:07,571 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:32:42,475 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:34:40,303 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 23:35:26,855 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 00:29:18,471 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 00:30:37,767 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 00:33:42,355 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 00:34:22,012 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 00:35:05,002 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 00:35:35,199 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 00:37:30,232 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 00:38:23,451 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]

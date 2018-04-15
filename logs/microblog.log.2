@@ -1,0 +1,106 @@
+2018-04-15 21:15:17,375 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:19:37,560 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:20:01,648 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:22:00,137 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:29:22,282 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:29:34,709 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 105, in stats
+    norm_corpus = normalize_corpus(input, tokenize=True)
+  File "/Users/wang/PycharmProjects/toxic/code/utils.py", line 138, in normalize_corpus
+    for text in corpus:
+TypeError: 'builtin_function_or_method' object is not iterable
+2018-04-15 21:30:18,407 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:30:56,661 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:36:01,715 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:37:49,832 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:41:41,637 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:45:03,183 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:46:36,512 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:47:13,056 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:48:41,008 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:49:36,192 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:52:13,061 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:55:55,726 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:56:13,998 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:57:51,195 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 21:58:06,120 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 127, in stats
+    vectorizer, feature_matrix = build_feature_matrix(norm_corpus, feature_type='frequency')
+  File "/Users/wang/PycharmProjects/toxic/code/utils.py", line 57, in build_feature_matrix
+    feature_matrix = vectorizer.fit_transform(documents).astype(float)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 869, in fit_transform
+    self.fixed_vocabulary_)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 792, in _count_vocab
+    for feature in analyze(doc):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 266, in <lambda>
+    tokenize(preprocess(self.decode(doc))), stop_words)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 232, in <lambda>
+    return lambda x: strip_accents(x.lower())
+AttributeError: 'list' object has no attribute 'lower'
+2018-04-15 22:00:08,304 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 22:00:21,308 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 129, in stats
+    feature_matrix = vectorizer.fit_transform(norm_corpus).astype(float)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 869, in fit_transform
+    self.fixed_vocabulary_)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 792, in _count_vocab
+    for feature in analyze(doc):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 266, in <lambda>
+    tokenize(preprocess(self.decode(doc))), stop_words)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 232, in <lambda>
+    return lambda x: strip_accents(x.lower())
+AttributeError: 'list' object has no attribute 'lower'
+2018-04-15 22:01:27,312 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 22:03:51,148 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 22:06:07,340 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 22:07:08,517 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 22:12:59,060 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 22:13:19,486 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 121, in stats
+    temp['label'] = pair['term'].encode('ascii', 'ignore')
+TypeError: string indices must be integers, not str
+2018-04-15 22:14:12,458 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]

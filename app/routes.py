@@ -10,9 +10,12 @@ from app.models import User, Post, Tweet
 from app.email import send_password_reset_email
 from code.twitter_crawl import twitter_query
 from code.LDA_topic_modeling import LDA_model
+from code.LSI_topic_modeling import LSI_model
 import numpy as np
-import json
+from code.utils import *
 import os
+from collections import Counter
+import pandas as pd
 
 
 @app.before_request
@@ -95,6 +98,51 @@ def tweets():
                            posts=posts)
 
 
+@app.route('/stats')
+def stats():
+    posts = Tweet.query.all()
+    post_list = []
+    for post in posts:
+        post_list.append(post.body)
+    norm_corpus = normalize_corpus(post_list, only_text_chars=True, tokenize=True)
+
+    flattened_norm_corpus = [y for x in norm_corpus for y in x]
+
+    vectorizer, feature_matrix = build_feature_matrix(flattened_norm_corpus, feature_type='frequency')
+    occ = np.asarray(feature_matrix.sum(axis=0)).ravel().tolist()
+    counts_df = pd.DataFrame({'term': vectorizer.get_feature_names(), 'occurrences': occ})
+    counts_df = counts_df.sort_values(by='occurrences', ascending=False).head(15).to_dict('records')
+
+    # print counts_df
+    count_result = []
+    for pair in counts_df:
+        temp = {}
+        temp['label'] = pair['term'].encode('ascii', 'ignore')
+        temp['value'] = pair['occurrences']
+        count_result.append(temp)
+
+    count_result = Markup(count_result)
+    # print result
+
+    transformer = TfidfVectorizer(analyzer='word')
+    norm_corpus = normalize_corpus(post_list, only_text_chars=True, tokenize=False)
+
+    transformed_weights = transformer.fit_transform(norm_corpus)
+    weights = np.asarray(transformed_weights.mean(axis=0)).ravel().tolist()
+    weights_df = pd.DataFrame({'term': transformer.get_feature_names(), 'weight': weights})
+    weights_df = weights_df.sort_values(by='weight', ascending=False).head(15).to_dict('records')
+
+    tfidf_result = []
+    for pair in weights_df:
+        temp = {}
+        temp['label'] = pair['term'].encode('ascii', 'ignore')
+        temp['value'] = pair['weight']
+        tfidf_result.append(temp)
+
+    tfidf_result = Markup(tfidf_result)
+    return render_template('stats.html', title='Statistics', count_result=count_result, tfidf_result=tfidf_result)
+
+
 @app.route('/lda')
 def lda():
     posts = Tweet.query.all()
@@ -102,7 +150,7 @@ def lda():
     for post in posts:
         post_list.append(post.body)
 
-    vectorizer, lda_model, svd_transformer, svd_matrix = LDA_model(post_list, 2, 100)
+    vectorizer, lda_model, svd_transformer, svd_matrix = LDA_model(post_list, 3, 100)
 
     data = {}
     feat_names = vectorizer.get_feature_names()
@@ -128,8 +176,8 @@ def lda():
 
     topic1 = []
     topic2 = []
+    topic3 = []
 
-    temp = {}
     for first_key in data.iterkeys():
         print first_key
         if first_key == 0:
@@ -144,14 +192,89 @@ def lda():
                 temp['label'] = term.encode('ascii', 'ignore')
                 temp['value'] = weight
                 topic2.append(temp)
+        elif first_key == 2:
+            for term, weight in zip(data[first_key]['terms'], data[first_key]['weights']):
+                temp = {}
+                temp['label'] = term.encode('ascii', 'ignore')
+                temp['value'] = weight
+                topic3.append(temp)
 
     print topic1
     print topic2
+    print topic3
 
     topic1 = Markup(topic1)
     topic2 = Markup(topic2)
+    topic3 = Markup(topic3)
     # print chart_data
-    return render_template('lda.html', title='LDA', posts=posts, topic1=topic1, topic2=topic2)
+    return render_template('lda.html', title='LDA', topic1=topic1, topic2=topic2, topic3=topic3)
+
+
+@app.route('/lsi')
+def lsi():
+    posts = Tweet.query.all()
+    post_list = []
+    for post in posts:
+        post_list.append(post.body)
+
+    vectorizer, lda_model, svd_transformer, svd_matrix = LSI_model(post_list, 3, 100)
+
+    data = {}
+    feat_names = vectorizer.get_feature_names()
+    for compNum in range(len(lda_model.components_)):
+        print compNum
+        comp = lda_model.components_[compNum]
+
+        # Sort the weights in the first component, and get the indices
+        indices = np.argsort(comp).tolist()[::-1]
+
+        # Grab the top 10 terms which have the highest weight in this component.
+        terms = [feat_names[weightIndex] for weightIndex in indices[0:10]]
+        weights = [comp[weightIndex] for weightIndex in indices[0:10]]
+        # print terms, weights
+        # terms.reverse()
+        # weights.reverse()
+        # print terms, weights
+        result = {}
+        result['terms'] = terms
+        result['weights'] = weights
+        data[compNum] = result
+    print data
+
+    topic1 = []
+    topic2 = []
+    topic3 = []
+
+    for first_key in data.iterkeys():
+        print first_key
+        if first_key == 0:
+            for term, weight in zip(data[first_key]['terms'], data[first_key]['weights']):
+                temp = {}
+                temp['label'] = term.encode('ascii', 'ignore')
+                temp['value'] = weight
+                topic1.append(temp)
+        elif first_key == 1:
+            for term, weight in zip(data[first_key]['terms'], data[first_key]['weights']):
+                temp = {}
+                temp['label'] = term.encode('ascii', 'ignore')
+                temp['value'] = weight
+                topic2.append(temp)
+        elif first_key == 2:
+            for term, weight in zip(data[first_key]['terms'], data[first_key]['weights']):
+                temp = {}
+                temp['label'] = term.encode('ascii', 'ignore')
+                temp['value'] = weight
+                topic3.append(temp)
+
+    print topic1
+    print topic2
+    print topic3
+
+    topic1 = Markup(topic1)
+    topic2 = Markup(topic2)
+    topic3 = Markup(topic3)
+    # print chart_data
+    return render_template('lsi.html', title='LSI', topic1=topic1, topic2=topic2, topic3=topic3)
 
 
 @app.route('/logout')

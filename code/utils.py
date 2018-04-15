@@ -39,18 +39,18 @@ def expand_contractions(text, contraction_mapping):
     return expanded_text
 
 
-def build_feature_matrix(documents, feature_type='frequency'):
+def build_feature_matrix(documents, feature_type='frequency', ngram_range=(1, 1), min_df=0.0, max_df=1.0):
     feature_type = feature_type.lower().strip()
 
     if feature_type == 'binary':
-        vectorizer = CountVectorizer(binary=True, min_df=1,
-                                     ngram_range=(1, 1))
+        vectorizer = CountVectorizer(binary=True, min_df=min_df,
+                                     max_df=max_df, ngram_range=ngram_range)
     elif feature_type == 'frequency':
-        vectorizer = CountVectorizer(binary=False, min_df=1,
-                                     ngram_range=(1, 1))
+        vectorizer = CountVectorizer(binary=False, min_df=min_df,
+                                     max_df=max_df, ngram_range=ngram_range)
     elif feature_type == 'tfidf':
-        vectorizer = TfidfVectorizer(min_df=1,
-                                     ngram_range=(1, 1))
+        vectorizer = TfidfVectorizer(min_df=min_df, max_df=max_df,
+                                     ngram_range=ngram_range)
     else:
         raise Exception("Wrong feature type entered. Possible values: 'binary', 'frequency', 'tfidf'")
 
