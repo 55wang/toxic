@@ -63,3 +63,8 @@ class EditProfileForm(FlaskForm):
 class PostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[DataRequired()])
     submit = SubmitField('Submit')
+
+
+class TwitterForm(FlaskForm):
+    post = TextAreaField('Enter search keyword', validators=[DataRequired()])
+    submit = SubmitField('Submit')

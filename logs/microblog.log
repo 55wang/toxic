@@ -1,108 +1,92 @@
-2018-04-01 22:57:07,840 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 22:57:25,573 ERROR: Exception on /login [POST] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/wang/PycharmProjects/microblog-0.12/app/routes.py", line 62, in login
-    user = User.query.filter_by(username=form.username.data).first()
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2789, in first
-    ret = list(self[0:1])
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2581, in __getitem__
-    return list(res)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2889, in __iter__
-    return self._execute_and_instances(context)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2912, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-OperationalError: (sqlite3.OperationalError) no such table: user [SQL: u'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen \nFROM user \nWHERE user.username = ?\n LIMIT ? OFFSET ?'] [parameters: (u'A0111785@u.nus.edu', 1, 0)] (Background on this error at: http://sqlalche.me/e/e3q8)
-2018-04-01 22:57:48,850 ERROR: Exception on /register [POST] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/wang/PycharmProjects/microblog-0.12/app/routes.py", line 85, in register
-    if form.validate_on_submit():
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
-    return self.is_submitted() and self.validate()
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/wtforms/form.py", line 310, in validate
-    return super(Form, self).validate(extra)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/wtforms/form.py", line 152, in validate
-    if not field.validate(self, extra):
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/wtforms/fields/core.py", line 204, in validate
-    stop_validation = self._run_validation_chain(form, chain)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/wtforms/fields/core.py", line 224, in _run_validation_chain
-    validator(form, self)
-  File "/Users/wang/PycharmProjects/microblog-0.12/app/forms.py", line 25, in validate_username
-    user = User.query.filter_by(username=username.data).first()
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2789, in first
-    ret = list(self[0:1])
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2581, in __getitem__
-    return list(res)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2889, in __iter__
-    return self._execute_and_instances(context)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2912, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-OperationalError: (sqlite3.OperationalError) no such table: user [SQL: u'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen \nFROM user \nWHERE user.username = ?\n LIMIT ? OFFSET ?'] [parameters: (u'apple', 1, 0)] (Background on this error at: http://sqlalche.me/e/e3q8)
-2018-04-01 22:58:31,599 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 22:58:35,580 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 22:59:47,914 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:01:37,297 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:03:20,621 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:03:25,271 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:11:28,697 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:12:16,428 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:13:03,943 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:13:14,921 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:13:45,823 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:14:10,234 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:14:33,863 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:14:47,855 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:29:49,686 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:36:17,332 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
-2018-04-01 23:42:07,348 INFO: Microblog startup [in /Users/wang/PycharmProjects/microblog-0.12/app/__init__.py:49]
+2018-04-15 18:16:24,657 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:25,521 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:25,580 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:25,603 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:25,690 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:26,601 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:26,668 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:26,685 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:26,824 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:27,731 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:27,822 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:27,827 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:27,926 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:28,740 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:28,825 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:28,830 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:28,945 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:43,330 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:43,426 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:43,515 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:43,626 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:44,338 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:44,436 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:44,525 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:44,641 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:45,355 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:45,459 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:45,543 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:45,653 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:46,365 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:46,471 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:46,561 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:46,660 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:47,376 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:47,485 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:47,576 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:47,674 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:48,388 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:48,490 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:48,587 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:48,683 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:49,402 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:49,497 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:49,601 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:49,696 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:50,424 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:50,529 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:50,615 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:50,728 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:51,440 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:51,540 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:51,631 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:51,743 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:57,790 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:58,684 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:16:59,602 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:00,489 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:01,376 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:02,262 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:03,158 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:04,069 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:05,009 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:05,906 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:29,529 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:30,444 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:31,364 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:32,259 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:33,301 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:34,201 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:35,110 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:36,027 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:36,949 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:37,837 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:38,732 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:39,629 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:40,534 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:41,420 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:42,314 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:43,200 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:44,092 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:44,987 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:45,891 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:46,821 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:47,739 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:48,658 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:49,575 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:50,481 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:51,378 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:52,285 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:53,183 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:17:54,102 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-15 18:20:17,508 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]

@@ -59,7 +59,7 @@ if __name__ == '__main__':
         # Grab the top 10 terms which have the highest weight in this component.
         terms = [feat_names[weightIndex] for weightIndex in indices[0:10]]
         weights = [comp[weightIndex] for weightIndex in indices[0:10]]
-        print terms, weights
+        # print terms, weights
         terms.reverse()
         weights.reverse()
         print terms, weights

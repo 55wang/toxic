@@ -8,7 +8,7 @@ def LSI_model(input, n_components, n_iter):
     norm_corpus = normalize_corpus(input)
     vectorizer, _ = build_feature_matrix(norm_corpus, feature_type='tfidf')
 
-    svd_model = TruncatedSVD(n_components=n_components, n_iter=n_iter)
+    svd_model = TruncatedSVD(n_components=n_components, n_iter=n_iter, random_state=100)
     svd_transformer = Pipeline([('tfidf', vectorizer),
                                 ('svd', svd_model)])
 

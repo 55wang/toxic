@@ -5,7 +5,7 @@ from tweepy import Cursor
 import jsonpickle
 
 # Maximum number of tweets we want to collect
-maxTweets = 60
+maxTweets = 10
 
 # The twitter Search API allows up to 100 tweets per query
 tweetsPerQry = 30
@@ -33,6 +33,7 @@ def get_twitter_client():
 
 
 def twitter_query(location, query_string):
+    api = get_twitter_client()
     # Getting Geo ID for USA
     places = api.geo_search(query=location, granularity="country")
     place_id = places[0].id
@@ -44,22 +45,23 @@ def twitter_query(location, query_string):
     # searchQuery = query_string
 
     tweetCount = 0
-    with open('../output/crawl_data.json', 'w') as f:
-
-        # Tell the Cursor method that we want to use the Search API (api.search)
-        # Also tell Cursor our query, and the maximum number of tweets to return
-        for tweet in Cursor(api.search, q=searchQuery).items(maxTweets):
-
-            # Verify the tweet has place info before writing (It should, if it got past our place filter)
-            if tweet.place is not None:
-                # Write the JSON format to the text file, and add one to the number of tweets we've collected
-                f.write(jsonpickle.encode(tweet._json, unpicklable=False) + '\n')
-                tweetCount += 1
-            print tweet.created_at, tweet.text
-        # Display how many tweets we have collected
-        print("Downloaded {0} tweets".format(tweetCount))
+# with open('../output/crawl_data.json', 'w') as f:
+    # Tell the Cursor method that we want to use the Search API (api.search)
+    # Also tell Cursor our query, and the maximum number of tweets to return
+    tweets = Cursor(api.search, q=searchQuery).items(maxTweets)
+    tweets_list = []
+    for tweet in tweets:
+        # Verify the tweet has place info before writing (It should, if it got past our place filter)
+        if tweet.place is not None:
+            # Write the JSON format to the text file, and add one to the number of tweets we've collected
+            # f.write(jsonpickle.encode(tweet._json, unpicklable=False) + '\n')
+            tweetCount += 1
+        tweets_list.append(tweet.text)
+        # print tweet.created_at, tweet.text
+    # Display how many tweets we have collected
+    print("Downloaded {0} tweets".format(tweetCount))
+    return tweets_list
 
 
 if __name__ == '__main__':
-    api = get_twitter_client()
     twitter_query('USA', 'python')

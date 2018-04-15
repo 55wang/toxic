@@ -127,11 +127,16 @@ def keep_text_characters(text):
     return filtered_text
 
 
+def rm_url(str):
+    return re.sub(r'http[s]?:[/+]?[a-zA-Z0-9_\.\/]*', '', str)
+
+
 def normalize_corpus(corpus, lemmatize=True,
                      only_text_chars=False,
                      tokenize=False):
     normalized_corpus = []
     for text in corpus:
+        text = rm_url(text)
         text = html_parser.unescape(text)
         text = expand_contractions(text, CONTRACTION_MAP)
         if lemmatize:
@@ -140,6 +145,7 @@ def normalize_corpus(corpus, lemmatize=True,
             text = text.lower()
         text = remove_special_characters(text)
         text = remove_stopwords(text)
+
         if only_text_chars:
             text = keep_text_characters(text)
 

@@ -1,12 +1,18 @@
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, \
+    send_from_directory, jsonify, Markup
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
-    ResetPasswordRequestForm, ResetPasswordForm
-from app.models import User, Post
+    ResetPasswordRequestForm, ResetPasswordForm, TwitterForm
+from app.models import User, Post, Tweet
 from app.email import send_password_reset_email
+from code.twitter_crawl import twitter_query
+from code.LDA_topic_modeling import LDA_model
+import numpy as np
+import json
+import os
 
 
 @app.before_request
@@ -70,6 +76,82 @@ def login():
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
+
+
+@app.route('/tweets', methods=['GET', 'POST'])
+def tweets():
+    form = TwitterForm()
+    if form.validate_on_submit():
+        print('posting data: ' + form.post.data)
+        tweets = twitter_query('USA', form.post.data)
+        for tweet in tweets:
+            post = Tweet(keyword=form.post.data, body=tweet)
+            db.session.add(post)
+        db.session.commit()
+        flash('Twitter crawled!')
+        return redirect(url_for('tweets'))
+    posts = Tweet.query.all()
+    return render_template('tweets.html', title='tweets', form=form,
+                           posts=posts)
+
+
+@app.route('/lda')
+def lda():
+    posts = Tweet.query.all()
+    post_list = []
+    for post in posts:
+        post_list.append(post.body)
+
+    vectorizer, lda_model, svd_transformer, svd_matrix = LDA_model(post_list, 2, 100)
+
+    data = {}
+    feat_names = vectorizer.get_feature_names()
+    for compNum in range(len(lda_model.components_)):
+        print compNum
+        comp = lda_model.components_[compNum]
+
+        # Sort the weights in the first component, and get the indices
+        indices = np.argsort(comp).tolist()[::-1]
+
+        # Grab the top 10 terms which have the highest weight in this component.
+        terms = [feat_names[weightIndex] for weightIndex in indices[0:10]]
+        weights = [comp[weightIndex] for weightIndex in indices[0:10]]
+        # print terms, weights
+        # terms.reverse()
+        # weights.reverse()
+        # print terms, weights
+        result = {}
+        result['terms'] = terms
+        result['weights'] = weights
+        data[compNum] = result
+    print data
+
+    topic1 = []
+    topic2 = []
+
+    temp = {}
+    for first_key in data.iterkeys():
+        print first_key
+        if first_key == 0:
+            for term, weight in zip(data[first_key]['terms'], data[first_key]['weights']):
+                temp = {}
+                temp['label'] = term.encode('ascii', 'ignore')
+                temp['value'] = weight
+                topic1.append(temp)
+        elif first_key == 1:
+            for term, weight in zip(data[first_key]['terms'], data[first_key]['weights']):
+                temp = {}
+                temp['label'] = term.encode('ascii', 'ignore')
+                temp['value'] = weight
+                topic2.append(temp)
+
+    print topic1
+    print topic2
+
+    topic1 = Markup(topic1)
+    topic2 = Markup(topic2)
+    # print chart_data
+    return render_template('lda.html', title='LDA', posts=posts, topic1=topic1, topic2=topic2)
 
 
 @app.route('/logout')
@@ -186,3 +268,12 @@ def unfollow(username):
     db.session.commit()
     flash('You are not following {}.'.format(username))
     return redirect(url_for('user', username=username))
+
+
+root = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'web')
+
+
+@app.route('/<path:path>', methods=['GET'])
+def static_proxy(path):
+    print root
+    return send_from_directory(root, path)
