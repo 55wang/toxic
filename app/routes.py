@@ -16,6 +16,31 @@ from code.utils import *
 import os
 from collections import Counter
 import pandas as pd
+import pickle
+from nltk.corpus import stopwords
+
+
+def test_transform(test, tf_transformer, model):
+    pkl_file = open('../data/lowTF_words.pkl', 'rb')
+    lowTF_words = pickle.load(pkl_file)
+
+    porter = nltk.PorterStemmer()
+    stops = set(stopwords.words('english'))
+    stops.add('rt')
+    test['comment_text'] = test['comment_text'].apply(lambda x: x.replace('\n', ' '))
+
+    tweets_new = []
+    for index, tweet in test.iterrows():
+        words = tweet['comment_text'].split(' ')
+        new = []
+        for w in words:
+            if w not in lowTF_words:
+                new.append(w)
+        new_tweet = ' '.join(new)
+        tweets_new.append(new_tweet)
+    test_feats = tf_transformer.transform(tweets_new)
+    test_predicts = model.predict(test_feats)
+    return test_predicts
 
 
 @app.before_request
@@ -32,6 +57,15 @@ def index():
     form = PostForm()
     if form.validate_on_submit():
         print('posting data: ' + form.post.data)
+
+        output = open(os.path.join('../data', 'lowTF_words.pkl'), 'r')
+        tf_transformer, model = pickle.load(output)
+        output.close()
+
+        test = pd.DataFrame({'id': 123, 'comment_text': form.post.data})
+        test_predicts = test_transform(test, tf_transformer, model)
+        print 'test_predicts: ', test_predicts
+
         post = Post(body=form.post.data, author=current_user)
         db.session.add(post)
         db.session.commit()

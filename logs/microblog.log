@@ -78,3 +78,29 @@ NameError: global name 'tfidf_result' is not defined
 2018-04-16 00:35:35,199 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
 2018-04-16 00:37:30,232 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
 2018-04-16 00:38:23,451 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 10:31:48,893 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 10:34:17,709 ERROR: Exception on /tweets [POST] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 123, in tweets
+    tweets = twitter_query('USA', form.post.data)
+  File "/Users/wang/PycharmProjects/toxic/code/twitter_crawl.py", line 53, in twitter_query
+    for tweet in tweets:
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/tweepy/cursor.py", line 197, in next
+    self.current_page = self.page_iterator.next()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/tweepy/cursor.py", line 108, in next
+    data = self.method(max_id=self.max_id, parser=RawParser(), *self.args, **self.kargs)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/tweepy/binder.py", line 250, in _call
+    return method.execute()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/tweepy/binder.py", line 234, in execute
+    raise TweepError(error_msg, resp, api_code=api_error_code)
+TweepError: Twitter error response: status code = 403
