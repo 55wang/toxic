@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import KFold
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.metrics import classification_report, precision_score, recall_score
 # from data_preprocess import pre_process
 # import nltk
@@ -62,6 +62,7 @@ def main():
     # NB classifier
     avg_p = 0
     avg_r = 0
+    print 'Naive Bayesian'
     for trainn, testn in kf.split(x_train):
         #       print(trainn)
         model = MultinomialNB().fit(x_train[trainn], y_train[trainn])
@@ -76,6 +77,7 @@ def main():
     # RF classifier
     avg_p = 0
     avg_r = 0
+    print 'Random Forest'
     for trainn, testn in kf.split(x_train):
         #       print(trainn)
         model = RandomForestClassifier().fit(x_train[trainn], y_train[trainn])
@@ -90,6 +92,7 @@ def main():
     # KNN classifier
     avg_p = 0
     avg_r = 0
+    print 'KNN'
     for trainn, testn in kf.split(x_train):
         #       print(trainn)
         model = KNeighborsClassifier().fit(x_train[trainn], y_train[trainn])
@@ -104,6 +107,7 @@ def main():
     # SVM classifier
     avg_p = 0
     avg_r = 0
+    print 'SVM'
     for trainn, testn in kf.split(x_train):
         #       print(trainn)
         model = SVC(kernel='linear', C=1, random_state=2018).fit(x_train[trainn], y_train[trainn])
@@ -115,21 +119,58 @@ def main():
     print('Average Precision is %f.' % (avg_p / 10.0))
     print('Average Recall is %f.' % (avg_r / 10.0))
 
-    # Use model for final prediction
+    # Gradient Boosting classifier
     avg_p = 0
     avg_r = 0
-    model = MultinomialNB().fit(x_train, y_train)
-    predicts = model.predict(x_test)
-    print(classification_report(y_test, predicts))
+    print 'Gradient Boosting'
+    for trainn, testn in kf.split(x_train):
+        #       print(trainn)
+        model = GradientBoostingClassifier().fit(x_train[trainn], y_train[trainn])
+        predicts = model.predict(x_train[testn])
+        # print(classification_report(y_train[testn],predicts))
+        avg_p += precision_score(y_train[testn], predicts, average='macro')
+        avg_r += recall_score(y_train[testn], predicts, average='macro')
+
+    print('Average Precision is %f.' % (avg_p / 10.0))
+    print('Average Recall is %f.' % (avg_r / 10.0))
+
+    # Use model for final prediction
+    print
+    print 'final prediction'
+    result_df = pd.DataFrame()
+    NB_model = MultinomialNB().fit(x_train, y_train)
+    NB_predicts = NB_model.predict(x_test)
+    result_df['NB_predicts'] = NB_predicts
+
+    RF_model = RandomForestClassifier().fit(x_train[trainn], y_train[trainn])
+    RF_predicts = RF_model.predict(x_test)
+    result_df['RF_predicts'] = RF_predicts
+
+    KNN_model = KNeighborsClassifier().fit(x_train[trainn], y_train[trainn])
+    KNN_predicts = KNN_model.predict(x_test)
+    result_df['KNN_predicts'] = KNN_predicts
+
+    SVM_model = SVC(kernel='linear', C=1, random_state=2018).fit(x_train[trainn], y_train[trainn])
+    SVM_predicts = SVM_model.predict(x_test)
+    result_df['SVM_predicts'] = SVM_predicts
+
+    GB_model = GradientBoostingClassifier().fit(x_train[trainn], y_train[trainn])
+    GB_predicts = GB_model.predict(x_test)
+    result_df['GB_predicts'] = GB_predicts
+
+    result_df['majority_vote'] = result_df.mode(axis=1)[0]
+    # print result_df.head()
+    predicts = result_df['majority_vote'].tolist()
+
+    # print(classification_report(y_test, predicts))
     avg_p = precision_score(y_test, predicts, average='macro')
     avg_r = recall_score(y_test, predicts, average='macro')
-
-    print('Test Precision is %f.' % (avg_p))
-    print('Test Recall is %f.' % (avg_r))
-
-    output = open(os.path.join(data_dir, 'model_transformer.pkl'), 'wb')
-    pickle.dump([tf_transformer, model], output)
-    output.close()
+    #
+    print('Fusion Test Precision is %f.' % (avg_p))
+    print('Fusion Test Recall is %f.' % (avg_r))
+    #
+    with open(os.path.join(data_dir, 'model_transformer.pkl'), 'w') as output:
+        pickle.dump([tf_transformer, NB_model, RF_model, KNN_model, SVM_model, GB_model], output)
 
 
 if __name__ == '__main__':

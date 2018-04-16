@@ -1,4 +1,4 @@
-2018-04-15 23:02:24,404 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+2018-04-16 13:32:03,132 ERROR: Exception on /lda [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,24 +10,20 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 129, in stats
-    vectorizer2, feature_matrix2 = build_feature_matrix(norm_corpus, feature_type='tfidf', ngram_range=(1, 1))
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 196, in lda
+    vectorizer, lda_model, svd_transformer, svd_matrix = LDA_model(post_list, 3, 100)
+  File "/Users/wang/PycharmProjects/toxic/code/LDA_topic_modeling.py", line 12, in LDA_model
+    vectorizer, _ = build_feature_matrix(norm_corpus, feature_type='tfidf')
   File "/Users/wang/PycharmProjects/toxic/code/utils.py", line 57, in build_feature_matrix
     feature_matrix = vectorizer.fit_transform(documents).astype(float)
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 1381, in fit_transform
     X = super(TfidfVectorizer, self).fit_transform(raw_documents)
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 869, in fit_transform
     self.fixed_vocabulary_)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 792, in _count_vocab
-    for feature in analyze(doc):
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 266, in <lambda>
-    tokenize(preprocess(self.decode(doc))), stop_words)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 232, in <lambda>
-    return lambda x: strip_accents(x.lower())
-AttributeError: 'list' object has no attribute 'lower'
-2018-04-15 23:03:05,500 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:11:30,310 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:11:40,843 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 811, in _count_vocab
+    raise ValueError("empty vocabulary; perhaps the documents only"
+ValueError: empty vocabulary; perhaps the documents only contain stop words
+2018-04-16 13:32:03,987 ERROR: Exception on /lsi [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -39,10 +35,22 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 146, in stats
-    return render_template('stats.html', title='Statistics', count_result=count_result, tfidf_result=tfidf_result)
-NameError: global name 'tfidf_result' is not defined
-2018-04-15 23:12:25,123 ERROR: Exception on /stats [GET] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 263, in lsi
+    vectorizer, lda_model, svd_transformer, svd_matrix = LSI_model(post_list, 3, 100)
+  File "/Users/wang/PycharmProjects/toxic/code/LSI_topic_modeling.py", line 11, in LSI_model
+    vectorizer, _ = build_feature_matrix(norm_corpus, feature_type='tfidf')
+  File "/Users/wang/PycharmProjects/toxic/code/utils.py", line 57, in build_feature_matrix
+    feature_matrix = vectorizer.fit_transform(documents).astype(float)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 1381, in fit_transform
+    X = super(TfidfVectorizer, self).fit_transform(raw_documents)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 869, in fit_transform
+    self.fixed_vocabulary_)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/sklearn/feature_extraction/text.py", line 811, in _count_vocab
+    raise ValueError("empty vocabulary; perhaps the documents only"
+ValueError: empty vocabulary; perhaps the documents only contain stop words
+2018-04-16 13:34:26,550 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 14:24:06,193 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 14:24:27,132 ERROR: Exception on /index [POST] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -54,32 +62,15 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 146, in stats
-    return render_template('stats.html', title='Statistics', count_result=count_result, tfidf_result=tfidf_result)
-NameError: global name 'tfidf_result' is not defined
-2018-04-15 23:14:00,127 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:23:20,396 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:23:58,107 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:26:04,459 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:27:51,043 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:28:50,706 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:30:18,267 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:30:48,075 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:30:54,098 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:31:07,571 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:32:42,475 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:34:40,303 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-15 23:35:26,855 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 00:29:18,471 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 00:30:37,767 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 00:33:42,355 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 00:34:22,012 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 00:35:05,002 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 00:35:35,199 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 00:37:30,232 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 00:38:23,451 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 10:31:48,893 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
-2018-04-16 10:34:17,709 ERROR: Exception on /tweets [POST] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 86, in index
+    prediction = test_transform(test, tf_transformer, NB_model, RF_model, KNN_model, SVM_model, GB_model)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 58, in test_transform
+    test_predicts = predicts.astype(int)
+AttributeError: 'list' object has no attribute 'astype'
+2018-04-16 14:25:05,258 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 14:25:15,071 ERROR: Exception on /index [POST] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -91,16 +82,31 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 123, in tweets
-    tweets = twitter_query('USA', form.post.data)
-  File "/Users/wang/PycharmProjects/toxic/code/twitter_crawl.py", line 53, in twitter_query
-    for tweet in tweets:
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/tweepy/cursor.py", line 197, in next
-    self.current_page = self.page_iterator.next()
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/tweepy/cursor.py", line 108, in next
-    data = self.method(max_id=self.max_id, parser=RawParser(), *self.args, **self.kargs)
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/tweepy/binder.py", line 250, in _call
-    return method.execute()
-  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/tweepy/binder.py", line 234, in execute
-    raise TweepError(error_msg, resp, api_code=api_error_code)
-TweepError: Twitter error response: status code = 403
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 86, in index
+    prediction = test_transform(test, tf_transformer, NB_model, RF_model, KNN_model, SVM_model, GB_model)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 58, in test_transform
+    test_predicts = predicts[0].astype(int)
+AttributeError: 'str' object has no attribute 'astype'
+2018-04-16 14:25:41,874 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 14:25:53,372 ERROR: Exception on /index [POST] [in /Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wang/anaconda3/envs/python2/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 88, in index
+    prediction = test_transform(test, tf_transformer, NB_model, RF_model, KNN_model, SVM_model, GB_model)
+  File "/Users/wang/PycharmProjects/toxic/app/routes.py", line 66, in test_transform
+    return prediction
+UnboundLocalError: local variable 'prediction' referenced before assignment
+2018-04-16 14:26:20,662 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]

@@ -84,6 +84,7 @@ def load_user(id):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
+    prediction = db.Column(db.String(10))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -94,6 +95,7 @@ class Post(db.Model):
 class Tweet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     keyword = db.Column(db.String(200))
+    prediction = db.Column(db.String(10))
     body = db.Column(db.String(2000))
 
     def __repr__(self):

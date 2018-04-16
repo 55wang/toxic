@@ -1,6 +1,8 @@
 from utils import *
 from sklearn.decomposition import TruncatedSVD
 from sklearn.pipeline import Pipeline
+import matplotlib
+matplotlib.use('TkAgg')
 from pylab import *
 
 

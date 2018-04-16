@@ -129,7 +129,7 @@ def features(df):
 
 if __name__ == "__main__":
     start = time.time()
-    data_dir = './data/'  ##Setting your own file path here.
+    data_dir = '../data/'  ##Setting your own file path here.
 
     x_filename = 'train.csv'
     test_filename = 'test.csv'
@@ -180,7 +180,7 @@ if __name__ == "__main__":
 
     # save label
     #    df_train[['toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']].to_csv('./data/labels.csv', index=False, header=True)
-    df_train[['toxic']].to_csv('./data/labels.csv', index=False, header=False)
+    df_train[['toxic']].to_csv('../data/labels.csv', index=False, header=False)
     df_train['comment_text'] = train['comment_text'].apply(lambda x: x.replace('\n', ' '))
 
     for index, tweet in tqdm(df_train.iterrows()):
@@ -203,7 +203,7 @@ if __name__ == "__main__":
     print("The number of unique words in data set is %i." % len(words_stat.keys()))
 
     lowTF_words = set()
-    with open(os.path.join(data_dir, 'original_words_statistics.txt'), 'w', encoding='utf8') as f:
+    with open(os.path.join(data_dir, 'original_words_statistics.txt'), 'w') as f:
         f.write('TF\tDF\tWORD\n')
         for word, stat in sorted(words_stat.items(), key=lambda i: i[1], reverse=True):
             f.write('\t'.join([str(m) for m in stat[0:2]]) + '\t' + word + '\n')
@@ -214,7 +214,7 @@ if __name__ == "__main__":
     # print(stops)
 
     ###Re-process samples, filter low frequency words...
-    fout = open(os.path.join(data_dir, 'original_samples_processed.txt'), 'w', encoding='utf8')
+    fout = open(os.path.join(data_dir, 'original_samples_processed.txt'), 'w')
     tweets_new = []
     for tweet in tweets:
         words = tweet.split(' ')

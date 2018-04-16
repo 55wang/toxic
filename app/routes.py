@@ -20,8 +20,8 @@ import pickle
 from nltk.corpus import stopwords
 
 
-def test_transform(test, tf_transformer, model):
-    pkl_file = open('../data/lowTF_words.pkl', 'rb')
+def test_transform(test, tf_transformer, NB_model, RF_model, KNN_model, SVM_model, GB_model):
+    pkl_file = open('./data/lowTF_words.pkl', 'rb')
     lowTF_words = pickle.load(pkl_file)
 
     porter = nltk.PorterStemmer()
@@ -39,8 +39,31 @@ def test_transform(test, tf_transformer, model):
         new_tweet = ' '.join(new)
         tweets_new.append(new_tweet)
     test_feats = tf_transformer.transform(tweets_new)
-    test_predicts = model.predict(test_feats)
-    return test_predicts
+    # test_predicts = model.predict(test_feats)
+    result_df = pd.DataFrame()
+    NB_predicts = NB_model.predict(test_feats)
+    result_df['NB_predicts'] = NB_predicts
+    RF_predicts = RF_model.predict(test_feats)
+    result_df['RF_predicts'] = RF_predicts
+    KNN_predicts = KNN_model.predict(test_feats)
+    result_df['KNN_predicts'] = KNN_predicts
+    SVM_predicts = SVM_model.predict(test_feats)
+    result_df['SVM_predicts'] = SVM_predicts
+    GB_predicts = GB_model.predict(test_feats)
+    result_df['GB_predicts'] = GB_predicts
+    result_df['majority_vote'] = result_df.mode(axis=1)[0]
+    # print result_df.head()
+    predicts = result_df['majority_vote'].tolist()
+
+    # print(predicts[0], predicts, int(predicts[0]))
+
+    test_predicts = int(predicts[0])
+    if test_predicts == 1:
+        prediction = 'Toxic'
+    elif test_predicts == 0:
+        prediction = 'Normal'
+    # print 'test_predicts: ', prediction
+    return prediction
 
 
 @app.before_request
@@ -58,15 +81,13 @@ def index():
     if form.validate_on_submit():
         print('posting data: ' + form.post.data)
 
-        output = open(os.path.join('../data', 'lowTF_words.pkl'), 'r')
-        tf_transformer, model = pickle.load(output)
-        output.close()
+        with open(os.path.join('./data', 'model_transformer.pkl')) as output:
+            tf_transformer, NB_model, RF_model, KNN_model, SVM_model, GB_model = pickle.load(output)
 
-        test = pd.DataFrame({'id': 123, 'comment_text': form.post.data})
-        test_predicts = test_transform(test, tf_transformer, model)
-        print 'test_predicts: ', test_predicts
+        test = pd.DataFrame({'id': [123], 'comment_text': [form.post.data]})
+        prediction = test_transform(test, tf_transformer, NB_model, RF_model, KNN_model, SVM_model, GB_model)
 
-        post = Post(body=form.post.data, author=current_user)
+        post = Post(body=form.post.data, author=current_user, prediction=prediction)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
@@ -122,7 +143,14 @@ def tweets():
         print('posting data: ' + form.post.data)
         tweets = twitter_query('USA', form.post.data)
         for tweet in tweets:
-            post = Tweet(keyword=form.post.data, body=tweet)
+
+            with open(os.path.join('./data', 'model_transformer.pkl')) as output:
+                tf_transformer, NB_model, RF_model, KNN_model, SVM_model, GB_model = pickle.load(output)
+
+            test = pd.DataFrame({'id': [123], 'comment_text': [tweet]})
+            prediction = test_transform(test, tf_transformer, NB_model, RF_model, KNN_model, SVM_model, GB_model)
+
+            post = Tweet(keyword=form.post.data, body=tweet, prediction=prediction)
             db.session.add(post)
         db.session.commit()
         flash('Twitter crawled!')
