@@ -155,7 +155,7 @@ def tweets():
         db.session.commit()
         flash('Twitter crawled!')
         return redirect(url_for('tweets'))
-    posts = Tweet.query.all()
+    posts = Tweet.query.order_by(Tweet.timestamp.desc()).all()
     return render_template('tweets.html', title='tweets', form=form,
                            posts=posts)
 

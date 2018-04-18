@@ -110,3 +110,7 @@ Traceback (most recent call last):
     return prediction
 UnboundLocalError: local variable 'prediction' referenced before assignment
 2018-04-16 14:26:20,662 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-16 17:03:49,859 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-17 00:00:34,941 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-17 00:00:44,788 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]
+2018-04-17 00:00:49,664 INFO: Microblog startup [in /Users/wang/PycharmProjects/toxic/app/__init__.py:49]

@@ -97,6 +97,7 @@ class Tweet(db.Model):
     keyword = db.Column(db.String(200))
     prediction = db.Column(db.String(10))
     body = db.Column(db.String(2000))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
         return '<keyword %r>' % (self.keyword)
